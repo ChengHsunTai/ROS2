@@ -59,7 +59,7 @@ ros2 run demo_nodes_py listener
 
 And the result will be shown like below
 
-
+![image](6ec77760.png)
 
 
 
