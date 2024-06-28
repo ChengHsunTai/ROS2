@@ -111,7 +111,7 @@ the rqt window will appear
 
 * click on the service dropdown list to see the `turtlesim`'s services, and select `/spawn` service.
 
-### 5.1 Let's use the rqt to call the `spawn` service. this service will create a new turtle in theturtlesim window.
+### 5.1 Let's use the rqt to call the `spawn` service. this service will create a new turtle in the turtlesim window.
 
 give the new turtle a unique name like `turtle2` by double-clicking the column `Expression`. Next, enter some valid coordinates at which to spawn the new turtle, like `x = 1.0` and `y = 1.0`.
 
