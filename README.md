@@ -26,7 +26,8 @@ Although the latest ROS 2 LTS distribution is ROS 2 Jazzy, it only supports Ubun
 sudo apt install software-properties-common
 sudo add-apt-repository universe
 ```
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/19725b20-c7d6-4f0c-82f4-5fdd797643e1)
+
 
 * 2. Add ROS2 GPG key with apt
 ```
@@ -54,7 +55,8 @@ sudo apt update
 sudo apt upgrade
 ```
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/b3812121-e724-45c0-8da0-e4b2f7456f88)
+
 
 * 3. Desktop install
 > ROS, RViz, demos, tutorials
@@ -63,11 +65,11 @@ picture!!!
 sudo apt install ros-humble-desktop
 ```
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/1e5f924f-c31d-4558-b12f-90b44e754f49)
 
 enter `Y` (It will take some time to install.)
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/4d5eb938-9ba6-4b74-bcdb-22487a85a447)
 
 * 4. ROS-Base Install
 >  Communication libraries, message packages, command line tools. No GUI tools
@@ -76,12 +78,15 @@ picture!!!
 sudo apt install ros-humble-ros-base
 ```
 
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/66c05894-ed42-480f-838c-0fd0856195bd)
+
 * 5. Development tools
 > Compilers and other tools to build ROS packages
 
 ```
 sudo apt install ros-dev-tools
 ```
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/12ea9eba-63dc-477e-8614-8e67563a1f5f)
 
 ## 3. environment setup
 >Sourcing the setup script
@@ -91,6 +96,25 @@ sudo apt install ros-dev-tools
 ```
 source /opt/ros/humble/setup.bash
 ```
+
+>[!TIP]
+>To avoid sourcing the setup every time, add the code above to your bashrc.
+>
+>* Open a new terminal and edit bashrc
+>
+>`nano ~/.bashrc`
+>
+>* add the code below to the end of your ~/.bashrc file.
+>
+>`source /opt/ros/humble/setup.bash`
+>
+>![7972e1c7](https://github.com/ChengHsunTai/ROS2/assets/137912642/3c5997d0-28f8-46fd-a9fe-18472bb0aed4)
+>
+> save the file and exit (`ctnl+x` and press `y` to save the file, press `enter` to exit the editor)
+> 
+>* reload the ~/.bashrc
+>
+>`source ~/.bashrc`
 
 ## 4. Try some demo to check whether installation successful or not
 
