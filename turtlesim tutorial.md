@@ -103,50 +103,60 @@ rqt
 ```
 the rqt window will appear
 
-picture!!!!
+![unnamed (2)](https://github.com/ChengHsunTai/ROS2/assets/137912642/0cc44bf2-43ea-478f-90e3-9d60789a6785)
 
 * When running the rqt for the first time,it's normal being blank. Select `Plugins > Services > Service Caller`from the menu bar at the top.
 
-picture!!!
+![unnamed (3)](https://github.com/ChengHsunTai/ROS2/assets/137912642/e9410e0a-3b40-4b66-9005-00c8c686887b)
 
 * click on the service dropdown list to see the `turtlesim`'s services, and select `/spawn` service.
-
-picture!!!
 
 ### 5.1 Let's use the rqt to call the `spawn` service. this service will create a new turtle in theturtlesim window.
 
 give the new turtle a unique name like `turtle2` by double-clicking the column `Expression`. Next, enter some valid coordinates at which to spawn the new turtle, like `x = 1.0` and `y = 1.0`.
 
-picture!!!
+![unnamed (4)](https://github.com/ChengHsunTai/ROS2/assets/137912642/873f26ea-e5e3-4c7b-93df-8be14f50af2b)
 
 >[!NOTE]
 >If you try to spawn a new turtle with the same name as an existing turtle, like the default turtle1, you will get an error message in the terminal running `turtlesim_node`:
 >
->picture!!!
+>![unnamed (5)](https://github.com/ChengHsunTai/ROS2/assets/137912642/fee8a024-bb89-4cfb-b0ce-a8cc426ed3c1)
+
 
 * To spawn `turtle2`, you need to call the service by clicking `Call` button.
 
-picture!!!
+![unnamed (6)](https://github.com/ChengHsunTai/ROS2/assets/137912642/f0e2cce9-c68f-4cab-9913-e214a8f3db08)
 
 if the service call is successfully, you should see a new turtle spawn at the coordinate you input for x and y.
 
-picture!!!
+![unnamed (7)](https://github.com/ChengHsunTai/ROS2/assets/137912642/d4df4337-764b-4431-8b14-4b815f67ee3c)
 
 If you refresh the service list in rqt, you will also see that now there are services related to the new turtle, `/turtle2/...`, in addition to `/turtle1/...`.
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/ff4b3b47-763c-4e58-8ee2-e421e937fbad)
 
 ### 5.2 set_pen Service
 > now let's give a unique pen for `turtle1` using the `set_pen` service
 
-Select the `/turtle1/set_pen` service from Service dropdown, and edit the properties including `r`, `g`, `b`, `width`.
+* Select the `/turtle1/set_pen` service from Service dropdown, and edit the properties including `r`, `g`, `b`, `width`.
 
-picture!!!
+![unnamed (8)](https://github.com/ChengHsunTai/ROS2/assets/137912642/8c810de1-38ea-48df-a3d1-a2b3e49fa137)
 
-move `turtle1` from terminal running `turtle_teleop_key`, you'll see the path turtle1 made change.
+* move `turtle1` from terminal running `turtle_teleop_key`, you'll see the path turtle1 made change.
 
-picture!!!
+![unnamed (9)](https://github.com/ChengHsunTai/ROS2/assets/137912642/2594a2e2-aaeb-44f9-ad20-ddfed0f4735b)
 
+## 6. Remapping
+> You’ve probably also noticed that there’s no way to move `turtle2`. That’s because there is no teleop node for `turtle2`.
+> You need a second teleop node in order to control `turtle2`. However, if you try to run the same command as before, you will notice that this one also controls turtle1. The way to change this behavior is by remapping the `cmd_vel` topic.
+
+* In the new terminal, source ROS2 if needed, and run
+
+`ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:=turtle2/cmd_vel`
+
+you can move `turtle2`, when this terminal is active, and `turtle1` when the other terminal running turtle_teleop_key is active.
+
+![unnamed (10)](https://github.com/ChengHsunTai/ROS2/assets/137912642/05d440b8-1bad-41a1-8473-e21a12382973)
 
 
 
