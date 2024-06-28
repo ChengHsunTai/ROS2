@@ -131,8 +131,10 @@ ros2 run demo_nodes_py listener
 
 * 3. And the result will be shown like below
 
-![image](6ec77760.png)
-![image](9a06ab5b.png)
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/4d044aed-0055-4d98-bf8e-1d6710a3bdd8)
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/434e7c5d-0e9e-4e80-b1e4-7d6547dc3bb5)
+
 
 
 
