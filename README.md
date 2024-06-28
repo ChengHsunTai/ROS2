@@ -1,11 +1,17 @@
 # Installing ROS2
+> Here is a step-by-step guide to install ROS2 Humble on Linux and Ubuntu 22.04.
+
+## introduction of ROS2
+ROS2, Robot Operating system, 
+
+
 ### add ROS2 apt repository
 > [!NOTE]
 > apt(Advanced Packaging Tool):用於安裝、更新或刪除
 > 
 > repository :儲存庫
 
-### ensure that the *Ubunto Universe repository* (This repository is community maintained and it provides free and open-source software.) is enable
+### ensure that the *Ubuntu Universe repository* (This repository is community maintained and it provides free and open-source software.) is enable
 ```
 sudo apt install software-properties-common
 sudo add-apt-repository universe
