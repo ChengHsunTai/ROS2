@@ -2,7 +2,7 @@
 > Turtlesim is a basic simulator designed for beginners learning ROS2. It illustrate what the ROS2 does at the most basic level of ROS2 operation,
 > and give you an idea of what you will do with a real robot or robot simulation.
 
-You will learn how to excecute ROS2_humble_Turtlesim in linux/Ubunto 22.04 by following the instructions below.
+You will learn how to excecute ROS2_humble_Turtlesim in linux/Ubuntu 22.04 by following the instructions below.
 
 ## 1. Sourcing your setup files
 As always, remember to source setup files for every new terminal.
