@@ -135,10 +135,10 @@ ros2 run demo_nodes_py listener
 
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/434e7c5d-0e9e-4e80-b1e4-7d6547dc3bb5)
 
-# How to uninstall ROS2 
+## How to uninstall ROS2 
 > In this section, you will learn how to uninstall ROS2 completely in linux/Ubuntu 22.04
 
-## check all distrbution of ROS2 you have installed
+### 1. check all distrbution of ROS2 you have installed
 * 1. open a terminal and enter the command below:
 ```
 cd /opt/ros
@@ -152,7 +152,7 @@ after checking for distributions of ROS2, we turn back to remove ROS2
 
 `cd `
 
-## Remove ROS2
+### 2. Remove ROS2
 * 1. enter the command to remove ROS2:
 ```
 sudo apt remove ros-*
@@ -200,7 +200,7 @@ sudo apt update
 
 the ros package is gone!
 
-## reboot
+### 3. reboot
 At last, remember to reboot your computer after removing multiple packages.
 
 `sudo reboot`
