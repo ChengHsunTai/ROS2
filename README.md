@@ -88,7 +88,7 @@ sudo apt install ros-dev-tools
 ```
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/12ea9eba-63dc-477e-8614-8e67563a1f5f)
 
-## 3. environment setup
+### 3. environment setup
 >Sourcing the setup script
 
 * 1. Set up your environment by sourcing the following file.
@@ -116,7 +116,7 @@ source /opt/ros/humble/setup.bash
 >
 >`source ~/.bashrc`
 
-## 4. Try some demo to check whether installation successful or not
+### 4. Try some demo to check whether installation successful or not
 
 * 1. open one terminal, source the setup file and run a `talker`(C++):
 ```
