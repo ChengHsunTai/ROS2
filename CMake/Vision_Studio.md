@@ -19,4 +19,11 @@
 
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/398a7187-517d-4532-b758-e057710a4ca0)
 
-### 2. 
+### 2. create a new code module and source the file
+
+ * 1. add a new folder
+
+in Solution Explorer, right-click the root folder and select `add -> add new folder`, named `new_code_module`.
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/65829e92-8aba-442c-98f3-25827e18a835)
+
