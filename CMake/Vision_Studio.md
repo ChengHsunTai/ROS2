@@ -3,7 +3,7 @@
 
 ## create a CMake project.
 
-### 1. set up
+### 1. set up CMake project
 * 1. select `tools` in the toolbar, and select `get tools and features`
  
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/edd5fbbb-1c85-4e52-9066-0753200aa755)
@@ -17,6 +17,6 @@
 
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/ae28912c-4de3-4d76-b69a-cebcca660e68)
 
-* 4. 
-
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/398a7187-517d-4532-b758-e057710a4ca0)
+
+### 2. 
