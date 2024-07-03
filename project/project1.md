@@ -125,7 +125,7 @@ Here, I use CMake to build a package.
 ros2 pkg create --build-type ament_cmake --license Apache-2.0 --node-name my_node my_package
 ```
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/a25dc15f-6a95-4372-8eca-8b578b62ce51)
 
 You will now have a new folder within your workspace’s `src` directory called `my_package`.
 
@@ -158,7 +158,7 @@ Now that your workspace has been added to your path, you will be able to use you
 ros2 run my_package my_node
 ```
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/d151cfdf-b4c0-4236-b29f-0d4a455b0c9d)
 
 ### 5. customize `package.xml`
 
@@ -166,47 +166,67 @@ to be conti
 
 ## Writing a simple publisher and subscriber (C++)
 
+### 1. create a new package
 
-
-
-
-## C++ ROS2 package
-### 1. use `colcon` to create C++ ROS2 package
- ```
-ros2 pkg create --build-type ament_cmake <package_name>
+in the workspace root `ros2_ws`, enter the command:
 ```
- here name the package `test1`
+ros2 pkg create --build-type ament_cmake --license Apache-2.0 cpp_pubsub
+```
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/c6a618fa-82cd-4512-a381-36774d2edc2f)
+
+### 2. write the publisher node
+
+navigate into `ros2_ws/src/cpp_pubsub/src`, and enter the command:
+
+```
+wget -O publisher_member_function.cpp https://raw.githubusercontent.com/ros2/examples/humble/rclcpp/topics/minimal_publisher/member_function.cpp
+```
+
+* 1. examine the code
+
+* 2. add dependencies
  
- ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/c3d02732-493a-4654-b104-e773ff2a3312)
-
-### 2. type the command below to see the struture of the package you create
-> if command `tree` not found. type the command `sudo apt install tree`, and try again.
-```
-tree -D  <package_name>
-```
-
-![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/5b5f445b-33cc-432f-ab30-5a62f659f500)
-
-The `include` and `src` directories are used to store the main source and header files of the program.
-
-### 3. ceate a node
+open `package.xml` in the `ros2_ws/src/cpp_pubsub` directorty.
+Add a new line after the `ament_cmake` buildtool dependency and paste the following dependencies corresponding to your node's include statements:
 
 ```
-cd ~/test1/src
-ros2 pkg create --build-type ament_cmake --node-name hello_world beginner_tutorials_cpp
+<depend>rclcpp</depend>
+<depend>std_msgs</depend>
 ```
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/0c734d73-e374-42f1-8c01-0952aceb3d27)
 
-in the `src` folder, conmmand `--node-name` to create a initial node, and it will also add the executable 
-for you in the `CMakeLists.txt`. After creating the node, you'll see the folder named `beginner_tutorials_cpp` 
-in the `src`.
+This declares the package needs rclcpp and std_msgs when its code is built and executed.
 
-you can see the structure of `beginner_tutorials_cpp` by using the command
+remember to save the file.
+
+* 3. CMakeList.txt
+
+add lines after `find_package(ament_cmake REQUIRED)`:
+
 ```
-tree beginner_tutorials_cpp
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+```
+After that, add the executable and name it `talker` so you can run your node using `ros2 run`:
+
+```
+add_executable(talker src/publisher_member_function.cpp)
+ament_target_dependencies(talker rclcpp std_msgs)
 ```
 
-picture!!!
+Finally, add the `install(TARGETS...)` section so `ros2 run` can find your executable:
 
-In this case, `hello_world__cpp` is the node. I won't using class in this project, so the forlder `beginner_tutorials_cpp`in the `include` folder is empty. Otherwise, it'll include a `hello_world.hpp`.  
+```
+install(TARGETS
+  talker
+  DESTINATION lib/${PROJECT_NAME})
+```
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/fea59843-c352-482c-9245-d0504f298230)
+
+### 3. write the subscriber node
+
+
+
