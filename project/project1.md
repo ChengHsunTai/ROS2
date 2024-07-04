@@ -202,7 +202,7 @@ wget -O publisher_member_function.cpp [https://raw.githubusercontent.com/ros2/ex
 /* This example creates a subclass of Node and uses std::bind() to register a member function as a callback from the timer. */
 
 ```
-class MinimalPublisher : public rclcpp::Node
+class MinimalPublisher : public rclcpp::Node 
 {
 public:
   MinimalPublisher()
@@ -227,6 +227,14 @@ private:
 };
 
 ```
+
+* `class MinimalPublisher : public rclcpp::Node`: `MinimalPublisher` inherits from `rclcpp::Node`, making it a ROS 2 node
+* `MinimalPublisher()`: constructor
+* `: Node("minimal_publisher")`Calls the base class constructor to initialize the node with the name "minimal_publisher".
+* `count_(0)`Initializes the `count_` variable to 0.
+* `publisher_` initialization:
+*`this->create_publisher<std_msgs::msg::String>("topic", 10)`: Creates a publisher that publishes messages of type `std_msgs::msg::String` on the topic named "topic" with a queue size of 10.
+* `timer_` initialization: Creates a timer that calls the timer_callback function every 500 milliseconds
 
 ```
 int main(int argc, char * argv[])
