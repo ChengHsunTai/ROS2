@@ -297,7 +297,7 @@ install(TARGETS
 navigate into `ros2_ws/src/cpp_pubsub/src`, and enter the command:
 
 ```
-wget -O subscriber_member_function.cpp https://raw.githubusercontent.com/ros2/examples/foxy/rclcpp/topics/minimal_subscriber/member_function.cpp
+wget -O subscriber_member_function.cpp [https://raw.githubusercontent.com/ros2/examples/foxy/rclcpp/topics/minimal_subscriber/member_function.cpp](https://github.com/ChengHsunTai/ROS2/blob/cab2ef8000be5e7f35c4775d3b49d3be3eb4f8d8/project/subscriber_member_function.cpp)
 ```
 
 Reopen `CMakeLists.txt` and add the executable and target for the subscriber node below the publisher’s entries.
@@ -313,8 +313,6 @@ install(TARGETS
 ```
 
 ### 4. build and run
-
-
 
 In the root of your workspace, `ros2_ws`, build your new package:
 
@@ -339,7 +337,16 @@ Open another terminal, source the setup files from inside `ros2_ws` again, and t
 ```
 ros2 run cpp_pubsub listener
 ```
-The result:
+### 5. The result:
 
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/244ee97b-2b0a-4d82-a48e-5d8b499d7f80)
 
+* use `rqt_graph` to show the relationship between two node
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/9680bd36-8f34-4a49-a7fb-0bfd67c1b9c6)
+
+As you can see, the topic named `topic` connect two node, and the message will be sent from publisher to subscriber.
+
+
+## A guard dog
+>In this section, I'll demonstrate two guard dogs communicating with each other by sending messages. If one dog stops sending messages, the other will continuously bark a warning. To accomplish this, I use two topics to connect the two nodes. Each node subscribes to the other's messages and issues a warning when messages are not received.
