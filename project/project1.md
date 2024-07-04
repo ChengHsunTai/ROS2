@@ -180,7 +180,7 @@ ros2 pkg create --build-type ament_cmake --license Apache-2.0 cpp_pubsub
 navigate into `ros2_ws/src/cpp_pubsub/src`, and enter the command below to download the publisher node:
 
 ```
-wget -O publisher_member_function.cpp [https://raw.githubusercontent.com/ros2/examples/humble/rclcpp/topics/minimal_publisher/member_function.cpp](https://github.com/ChengHsunTai/ROS2/blob/ea9b59d8a818e0c8d133ce7866c5250af14aa9b8/project/publisher_member_function.cpp)
+wget -O publisher_member_function.cpp https://github.com/ChengHsunTai/ROS2/blob/89e3276ff9a9cd190afc218791eeb48a262dbfbf/project/publisher_member_function.cpp
 ```
 
 * 1. examine the code
@@ -297,7 +297,7 @@ install(TARGETS
 navigate into `ros2_ws/src/cpp_pubsub/src`, and enter the command:
 
 ```
-wget -O subscriber_member_function.cpp [https://raw.githubusercontent.com/ros2/examples/foxy/rclcpp/topics/minimal_subscriber/member_function.cpp](https://github.com/ChengHsunTai/ROS2/blob/cab2ef8000be5e7f35c4775d3b49d3be3eb4f8d8/project/subscriber_member_function.cpp)
+wget -O subscriber_member_function.cpp https://github.com/ChengHsunTai/ROS2/blob/89e3276ff9a9cd190afc218791eeb48a262dbfbf/project/subscriber_member_function.cpp
 ```
 
 Reopen `CMakeLists.txt` and add the executable and target for the subscriber node below the publisher’s entries.
@@ -350,3 +350,131 @@ As you can see, the topic named `topic` connect two node, and the message will b
 
 ## A guard dog
 >In this section, I'll demonstrate two guard dogs communicating with each other by sending messages. If one dog stops sending messages, the other will continuously bark a warning. To accomplish this, I use two topics to connect the two nodes. Each node subscribes to the other's messages and issues a warning when messages are not received.
+
+### 1. creating a new package
+
+in the workspace root `ros2_ws`, enter the command:
+```
+ros2 pkg create --build-type ament_cmake --license Apache-2.0 guard_dog
+```
+
+picture!!!
+
+### 2. write the first guard dog  `node_a`
+
+
+navigate into `ros2_ws/src/guard_dog/src`, and enter the command below to download the publisher node:
+
+```
+wget -O publisher_member_function.cpp https://github.com/ChengHsunTai/ROS2/blob/89e3276ff9a9cd190afc218791eeb48a262dbfbf/project/node_a.cpp
+```
+* 1. add dependencies
+ 
+open `package.xml` in the `ros2_ws/src/guard_dog` directorty.
+Add a new line after the `ament_cmake` buildtool dependency and paste the following dependencies corresponding to your node's include statements:
+
+```
+<depend>rclcpp</depend>
+<depend>std_msgs</depend>
+```
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/0c734d73-e374-42f1-8c01-0952aceb3d27)
+
+This declares the package needs rclcpp and std_msgs when its code is built and executed.
+
+remember to save the file.
+
+* 2. CMakeList.txt
+
+add lines after `find_package(ament_cmake REQUIRED)`:
+
+```
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+```
+After that, add the executable and name it `member_a` so you can run your node using `ros2 run`:
+
+```
+add_executable(member_a src/node_a.cpp)
+ament_target_dependencies(member_a rclcpp std_msgs)
+```
+
+Finally, add the `install(TARGETS...)` section so `ros2 run` can find your executable:
+
+```
+install(TARGETS
+  member_a
+  DESTINATION lib/${PROJECT_NAME})
+```
+
+### 3. write the subscriber node
+
+navigate into `ros2_ws/src/guard_dog/src`, and enter the command:
+
+```
+wget -O subscriber_member_function.cpp https://github.com/ChengHsunTai/ROS2/blob/89e3276ff9a9cd190afc218791eeb48a262dbfbf/project/subscriber_member_function.cpp
+```
+
+Reopen `CMakeLists.txt` and add the executable and target for the subscriber node below the publisher’s entries.
+
+```
+add_executable(member_b src/node_b.cpp)
+ament_target_dependencies(member_b rclcpp std_msgs)
+
+install(TARGETS
+  member_a
+  member_b
+  DESTINATION lib/${PROJECT_NAME})
+```
+
+picture!!!
+
+### 4. build and run
+
+In the root of your workspace, `ros2_ws`, build your new package:
+
+```
+colcon build --packages-select guard_dog
+```
+
+Open a new terminal, navigate to `ros2_ws`, source the setup file:
+
+```
+. install/setup.bash
+```
+
+run the talker node
+
+```
+ros2 run guard_dog member_a
+```
+
+Open another terminal, source the setup files from inside `ros2_ws` again, and then start the listener node:
+
+```
+ros2 run guard_dog member_b
+```
+
+### 5. result
+
+* 1. when two dogs are receiving the message successfully
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/85cd2ef8-3bbb-43b4-8237-774c7ef58fe9)
+
+* 2. stop running the `member_b` node
+ 
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/9f89f897-c9be-403b-aeb8-76faea4907cd)
+
+* 3. run the `member_b` again
+ 
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/bc031d4a-a67e-41e6-9739-fdd915b7000b)
+
+* 4. stop running the `member_a`
+ 
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/410254af-cf08-4f82-ad6c-6ea7b2f5218c)
+
+* 5. use `rqt_graph` to see the relationship between two nodes:
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/113e1e32-3c92-48c4-ab8d-c4ea99120c17)
+
+As you can see, there's two topics connect the nodes.
+
