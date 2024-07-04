@@ -192,16 +192,16 @@ wget -O publisher_member_function.cpp [https://raw.githubusercontent.com/ros2/ex
 |`#include <memory>`| managing dynamic memory allocation, specifically smart pointers like `std::shared_ptr`.|
 
 ***
-`#include "rclcpp/rclcpp.hpp"` // Includes the main header file for the ROS 2 C++ client library
-
-`#include "std_msgs/msg/string.hpp"` // This is a standard message type in ROS 2 for sending string data.Used with `rclcpp::Subscription<std_msgs::msg::String>` to create a subscriber that listens for messages of type `std_msgs::msg::String`.
-
-using namespace std::chrono_literals; // to define the time duration like : 1000ms
-
-/* This example creates a subclass of Node and uses std::bind() to register a member function as a callback from the timer. */
+| Command | Description |
+| ---- | --- |
+|`#include "rclcpp/rclcpp.hpp"`|Includes the main header file for the ROS 2 C++ client library|
+|`#include "std_msgs/msg/string.hpp"`| This is a standard message type in ROS 2 for sending string data.Used with `rclcpp::Subscription<std_msgs::msg::String>` to create a subscriber that listens for messages of type `std_msgs::msg::String`.|
+|`using namespace std::chrono_literals;`| to define the time duration like : 1000ms|
 
 ***
+/* This example creates a subclass of Node and uses std::bind() to register a member function as a callback from the timer. */
 
+```
 class MinimalPublisher : public rclcpp::Node
 {
 public:
@@ -226,13 +226,22 @@ private:
   size_t count_;
 };
 
+```
+
+```
 int main(int argc, char * argv[])
 {
-  rclcpp::init(argc, argv);
+  rclcpp::init(argc, argv); 
   rclcpp::spin(std::make_shared<MinimalPublisher>());
   rclcpp::shutdown();
   return 0;
 }
+```
+| Command | Description |
+| ---- | --- |
+|`rclcpp::init(argc, argv);`|Initializes ROS 2|
+|`rclcpp::spin(std::make_shared<MinimalPublisher>());`| Spins (runs) the MinimalSubscriber node|
+
 
 * 2. add dependencies
  
