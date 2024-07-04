@@ -177,13 +177,62 @@ ros2 pkg create --build-type ament_cmake --license Apache-2.0 cpp_pubsub
 
 ### 2. write the publisher node
 
-navigate into `ros2_ws/src/cpp_pubsub/src`, and enter the command:
+navigate into `ros2_ws/src/cpp_pubsub/src`, and enter the command below to download the publisher node:
 
 ```
-wget -O publisher_member_function.cpp https://raw.githubusercontent.com/ros2/examples/humble/rclcpp/topics/minimal_publisher/member_function.cpp
+wget -O publisher_member_function.cpp [https://raw.githubusercontent.com/ros2/examples/humble/rclcpp/topics/minimal_publisher/member_function.cpp](https://github.com/ChengHsunTai/ROS2/blob/ea9b59d8a818e0c8d133ce7866c5250af14aa9b8/project/publisher_member_function.cpp)
 ```
 
 * 1. examine the code
+
+| Command | Description |
+| ---- | --- |
+|`#include <chrono>`|Provides facilities for working with time durations and time points.|
+|`#include <functional>`| provides bind() function to bind functions with parameters.|
+|`#include <memory>`| managing dynamic memory allocation, specifically smart pointers like `std::shared_ptr`.|
+
+***
+`#include "rclcpp/rclcpp.hpp"` // Includes the main header file for the ROS 2 C++ client library
+
+`#include "std_msgs/msg/string.hpp"` // This is a standard message type in ROS 2 for sending string data.Used with `rclcpp::Subscription<std_msgs::msg::String>` to create a subscriber that listens for messages of type `std_msgs::msg::String`.
+
+using namespace std::chrono_literals; // to define the time duration like : 1000ms
+
+/* This example creates a subclass of Node and uses std::bind() to register a member function as a callback from the timer. */
+
+***
+
+class MinimalPublisher : public rclcpp::Node
+{
+public:
+  MinimalPublisher()
+  : Node("minimal_publisher"), count_(0)
+  {
+    publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
+    timer_ = this->create_wall_timer(
+      500ms, std::bind(&MinimalPublisher::timer_callback, this));
+  }
+
+private:
+  void timer_callback()
+  {
+    auto message = std_msgs::msg::String();
+    message.data = "Hello, world! " + std::to_string(count_++);
+    RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+    publisher_->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+  size_t count_;
+};
+
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<MinimalPublisher>());
+  rclcpp::shutdown();
+  return 0;
+}
 
 * 2. add dependencies
  
