@@ -228,5 +228,52 @@ install(TARGETS
 
 ### 3. write the subscriber node
 
+navigate into `ros2_ws/src/cpp_pubsub/src`, and enter the command:
 
+```
+wget -O subscriber_member_function.cpp https://raw.githubusercontent.com/ros2/examples/foxy/rclcpp/topics/minimal_subscriber/member_function.cpp
+```
+
+Reopen `CMakeLists.txt` and add the executable and target for the subscriber node below the publisher’s entries.
+
+```
+add_executable(listener src/subscriber_member_function.cpp)
+ament_target_dependencies(listener rclcpp std_msgs)
+
+install(TARGETS
+  talker
+  listener
+  DESTINATION lib/${PROJECT_NAME})
+```
+
+### 4. build and run
+
+
+
+In the root of your workspace, `ros2_ws`, build your new package:
+
+```
+colcon build --packages-select cpp_pubsub
+```
+
+Open a new terminal, navigate to `ros2_ws`, source the setup file:
+
+```
+. install/setup.bash
+```
+
+run the talker node
+
+```
+ros2 run cpp_pubsub talker
+```
+
+Open another terminal, source the setup files from inside `ros2_ws` again, and then start the listener node:
+
+```
+ros2 run cpp_pubsub listener
+```
+The result:
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/244ee97b-2b0a-4d82-a48e-5d8b499d7f80)
 
