@@ -358,7 +358,8 @@ in the workspace root `ros2_ws`, enter the command:
 ros2 pkg create --build-type ament_cmake --license Apache-2.0 guard_dog
 ```
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/56493ceb-2c6b-450c-8f34-2a4251e975b1)
+
 
 ### 2. write the first guard dog  `node_a`
 
@@ -427,7 +428,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 ```
 
-picture!!!
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/1df5ada4-9a6c-4039-bc4d-ef4ee645d889)
 
 ### 4. build and run
 
