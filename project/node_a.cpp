@@ -1,4 +1,21 @@
-  auto message = std_msgs::msg::Int32();
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/int32.hpp"
+
+class NodeA : public rclcpp::Node {
+public:
+    NodeA() : Node("node_a"), last_message_time_(this->now()) {
+        publisher_ = this->create_publisher<std_msgs::msg::Int32>("topic_b_to_a", 10);
+        subscription_ = this->create_subscription<std_msgs::msg::Int32>(
+            "topic_a_to_b", 10, std::bind(&NodeA::messageCallback, this, std::placeholders::_1));
+        timer_ = this->create_wall_timer(
+            std::chrono::milliseconds(1000), std::bind(&NodeA::publishMessage, this));
+        check_timer_ = this->create_wall_timer(
+            std::chrono::milliseconds(2000), std::bind(&NodeA::checkForMessages, this));
+    }
+
+private:
+    void publishMessage() {
+        auto message = std_msgs::msg::Int32();
         message.data = 1;
         publisher_->publish(message);
     }
