@@ -8,7 +8,7 @@ public:
         subscription_ = this->create_subscription<std_msgs::msg::Int32>(
             "topic_b_to_a", 10, std::bind(&NodeB::messageCallback, this, std::placeholders::_1));
         timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(1000), std::bind(&NodeB::publishMessage, this));
+            std::chrono::milliseconds(1000), std::bind(&NodeB::publishMessage, this)); // change this, &NodeB or NodeB or NodeC
         check_timer_ = this->create_wall_timer(
             std::chrono::milliseconds(2000), std::bind(&NodeB::checkForMessages, this));
     }
@@ -16,11 +16,11 @@ public:
 private:
     void publishMessage() {
         auto message = std_msgs::msg::Int32();
-        message.data = 1;
+        message.data = 1; //改
         publisher_->publish(message);
     }
 
-    void messageCallback(const std_msgs::msg::Int32::SharedPtr msg) {
+    void messageCallback(const std_msgs::msg::Int32::SharedPtr msg) { 
         last_message_time_ = this->now();
         RCLCPP_INFO(this->get_logger(), "Received from node_a: %d", msg->data);
     }
