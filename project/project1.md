@@ -19,7 +19,7 @@ mkdir -p ~/ros2_ws/src
 
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/5c7d0ca6-6738-4c58-baba-d524c1d901db)
 
-then navagate into the src directory.
+then navigate into the src directory.
 ```
 cd ~/ros2_ws/src
 ```
