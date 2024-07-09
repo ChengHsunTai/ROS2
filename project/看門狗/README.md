@@ -15,8 +15,9 @@
 
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/4155d0a2-76fa-4e24-8a43-f15ec5d8b760)
 
-### 3. 模擬 member_b 當機情況，持續輸出 1
+### 3. 模擬 member_b 當機情況，持續輸出 1。member_a 持續輸出警訊。
 
-![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/94299b27-67c4-44dd-83ac-eb1ffedb2d3c)
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/785d3633-74b0-4c7a-922e-5190cdb5143f)
+
 
 
