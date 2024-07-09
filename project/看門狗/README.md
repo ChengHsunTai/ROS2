@@ -22,7 +22,7 @@ ros2 pkg create --build-type ament_cmake --license Apache-2.0 guard_dog
 navigate into `ros2_ws/src/guard_dog/src`, and enter the command below to download the publisher node:
 
 ```
-wget -O publisher_member_function.cpp https://github.com/ChengHsunTai/ROS2/blob/89e3276ff9a9cd190afc218791eeb48a262dbfbf/project/node_a.cpp
+wget -O publisher_member_function.cpp https://github.com/ChengHsunTai/ROS2/blob/edca1389d3c3ff43e434c0bea40336e696d3e068/project/%E7%9C%8B%E9%96%80%E7%8B%97/member_a.cpp
 ```
 * 1. add dependencies
  
@@ -68,7 +68,7 @@ install(TARGETS
 navigate into `ros2_ws/src/guard_dog/src`, and enter the command:
 
 ```
-wget -O subscriber_member_function.cpp https://github.com/ChengHsunTai/ROS2/blob/89e3276ff9a9cd190afc218791eeb48a262dbfbf/project/subscriber_member_function.cpp
+wget -O subscriber_member_function.cpp https://github.com/ChengHsunTai/ROS2/blob/edca1389d3c3ff43e434c0bea40336e696d3e068/project/%E7%9C%8B%E9%96%80%E7%8B%97/member_b.cpp
 ```
 
 Reopen `CMakeLists.txt` and add the executable and target for the subscriber node below the publisher’s entries.
