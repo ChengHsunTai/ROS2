@@ -1,4 +1,4 @@
-# Create my first project
+# Create first project
 
 ## creating a Workspace
 > In ROS2, a project is generally veiwed as a unit and packaged into a folder, which is referred to as a Workspace `ws`. Creating a workspace and learn how to set up an overlay for development and testing.
