@@ -1,6 +1,22 @@
 # 看門狗
 當雙方在進行數據交握時，確保彼此都在線上是至關重要的。這樣可以及時發現任何一方出現斷訊或當機的情況，從而防止訊息傳輸失敗或造成更大的損失。透過這種方式，不僅能保障數據傳輸的完整性，還能確保雙方在通信過程中的協同一致，從而有效地減少風險和損失。
 
-看門狗的機制為，設置兩隻看門狗分別在兩方通訊設備上，牠們通過發送1、0變換的訊息進行交流。如果其中一隻看門狗停止發送變換消息或發送沒有變換的訊息，另一隻看門狗將發出警告。為了實現這一點，我使用了在ROS2 中的topic以及node來實現本次專案。每個node都會透過topic訂閱另一個節點的訊息，並在未收到消息時發出警告，如下圖。
+看門狗的機制為，設置兩隻看門狗分別在兩方通訊設備上，牠們通過發送1、0變換的訊息進行交流。如果其中一隻看門狗停止發送變換消息或發送沒有變換的訊息，另一隻看門狗將發出警告。為了實現這一點，我使用了在ROS2 中的topic以及node來實現本次專案。每個node都會透過topic訂閱另一個節點的訊息，如下圖。
 
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/113e1e32-3c92-48c4-ab8d-c4ea99120c17)
+
+
+## 成果
+
+### 1. 當 member_b 接收不到member_a 的訊息時(左邊終端機為member_b，右邊為member_a)
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/1fdbf4a8-2a1f-437a-9825-9fecd826a1bd)
+
+### 2. 當 member_a 接收不到member_b 的訊息時
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/4155d0a2-76fa-4e24-8a43-f15ec5d8b760)
+
+### 3. 模擬 member_b 當機情況，持續輸出 1
+
+![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/94299b27-67c4-44dd-83ac-eb1ffedb2d3c)
+
+
