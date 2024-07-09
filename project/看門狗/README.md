@@ -111,29 +111,6 @@ Open another terminal, source the setup files from inside `ros2_ws` again, and t
 ros2 run guard_dog member_b
 ```
 
-### 5. result
-
-* 1. when two dogs are receiving the message successfully
-![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/85cd2ef8-3bbb-43b4-8237-774c7ef58fe9)
-
-* 2. stop running the `member_b` node
- 
-![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/9f89f897-c9be-403b-aeb8-76faea4907cd)
-
-* 3. run the `member_b` again
- 
-![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/bc031d4a-a67e-41e6-9739-fdd915b7000b)
-
-* 4. stop running the `member_a`
- 
-![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/410254af-cf08-4f82-ad6c-6ea7b2f5218c)
-
-* 5. use `rqt_graph` to see the relationship between two nodes:
-
-![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/113e1e32-3c92-48c4-ab8d-c4ea99120c17)
-
-As you can see, there's two topics connect the nodes.
-
 
 ## 成果
 
