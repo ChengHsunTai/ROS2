@@ -16,6 +16,7 @@ find_package(std_msgs REQUIRED)
 
 add_executable(member_a src/node_a.cpp)
 ament_target_dependencies(member_a rclcpp std_msgs)
+
 add_executable(member_b src/node_b.cpp)
 ament_target_dependencies(member_b rclcpp std_msgs)
 
