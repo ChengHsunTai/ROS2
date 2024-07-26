@@ -150,7 +150,9 @@ For example below, you'll see one distribution `humble` in `ros` directory.
 
 after checking for distributions of ROS2, we turn back to remove ROS2
 
-`cd `
+```
+cd
+```
 
 ### 2. Remove ROS2
 * 1. enter the command to remove ROS2:
@@ -160,7 +162,9 @@ sudo apt autoremove
 ```
 * 2. check all packages have been removed, enter the command again
 
-`sudo apt autoremove`
+```
+sudo apt autoremove
+```
 
 the terminal should return:
 
@@ -170,7 +174,9 @@ the terminal should return:
 
 enter the command below:
 
-`sudo apt update`
+```
+sudo apt update
+```
 
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/74946aa9-9e42-4e1a-a5ca-cc805cbc34c2)
 
