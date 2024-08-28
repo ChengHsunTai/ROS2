@@ -3,8 +3,6 @@ To ensure data integrity and coordination during data exchange, it's crucial to 
 
 The watchdog mechanism involves setting up two watchdogs on each communication device, which communicate by sending alternating 1 and 0 messages. If one watchdog stops sending alternating messages, the other issues a warning. This project uses ROS2 topics and nodes, where each node subscribes to the other's messages, as illustrated below.
 
-The watchdog mechanism achieves this by setting up two watchdogs on each communication device. These watchdogs send alternating 1 and 0 messages to each other. If one watchdog stops sending these messages, the other issues a warning. This project uses ROS2 topics and nodes, where each node subscribes to the other's messages, as shown below.
-
 ![image](https://github.com/ChengHsunTai/ROS2/assets/137912642/113e1e32-3c92-48c4-ab8d-c4ea99120c17)
 
 ## Steps
